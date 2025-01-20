@@ -1,0 +1,20 @@
+
+
+// Import font-face for Brush Script MT
+@font-face {
+    font-family: 'Brush Script MT';
+    src: url('../fonts/BrushScriptMT.ttf') format('truetype');
+  }
+  
+  // Import font-face for Trebuchet MS
+  @font-face {
+    font-family: 'Trebuchet MS';
+    src: url('../fonts/TrebuchetMS.ttf') format('truetype');
+  }
+
+$primary-color: #333;
+$secondary-color: #fff;
+$highlight-color: #ffa500;
+
+$primary-font: 'Brush Script MT', cursive;
+$secondary-font: 'Trebuchet MS', sans-serif;

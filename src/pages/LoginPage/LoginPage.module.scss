@@ -1,0 +1,110 @@
+.loginContainer {
+    width: 400px;
+    margin: 4rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: "Trebuchet MS";
+  
+    .title {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+      }
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      .inputGroup {
+        position: relative;
+        margin-bottom: 1rem;
+        width: 100%;
+  
+        .icon {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 1rem; 
+          color: #007bff;
+  
+          @media (max-width: 768px) {
+            font-size: 0.9rem;
+          }
+        }
+  
+        input {
+          width: 90%;
+          padding: 0.5rem 0.5rem 0.5rem 2rem; 
+          font-size: 0.9rem; 
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          outline: none;
+          transition: all 0.3s ease;
+  
+          &:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+          }
+  
+          @media (max-width: 768px) {
+            font-size: 0.8rem;
+            width: 90%;
+            padding: 0.4rem 0.4rem 0.4rem 1.8rem;
+          }
+        }
+      }
+  
+      .submitButton {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: bold;
+        padding: 0.4rem 1rem; 
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: auto;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+  
+        &:disabled {
+          background-color: #c0c0c0;
+          cursor: not-allowed;
+        }
+  
+        @media (max-width: 768px) {
+          font-size: 0.7rem;
+          padding: 0.3rem 0.8rem;
+        }
+      }
+    }
+  
+    .errorMessage {
+      margin-top: 1rem;
+      color: red;
+      font-size: 0.9rem;
+  
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  }

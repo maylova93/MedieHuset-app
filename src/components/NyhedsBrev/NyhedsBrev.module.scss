@@ -1,0 +1,114 @@
+.newsletter {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  font-family: 'Trebuchet MS';
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #000; 
+  color: #fff;
+  box-sizing: border-box;
+
+  /* Baggrundsbillede styling */
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+
+    @media (max-width: 768px) {
+      font-size: 2rem; /* Reducér skriftstørrelsen til mobil */
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ccc; 
+    max-width: 600px;
+
+    @media (max-width: 768px) {
+      font-size: 1rem; /* Reducér skriftstørrelsen til mobil */
+    }
+  }
+
+  .form {
+    display: flex;
+    width: 50%;
+    max-width: 800px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+
+    .input-wrapper {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 100%;
+        padding: 0.5rem 0.5rem 0.5rem 2.5rem; 
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 5px 0 0 5px; 
+        outline: none;
+        font-family: 'Trebuchet MS'; 
+        box-sizing: border-box;
+      }
+
+      .icon {
+        position: absolute;
+        left: 10px;
+        font-size: 1.6rem;
+        color: #666;
+      }
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0 5px 5px 0; 
+      background-color: #007bff; 
+      color: #fff; 
+      font-family: 'Trebuchet MS'; 
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  /* Mobilvenlig styling */
+  @media (max-width: 768px) {
+    min-height: 250px; /* Reducér højden på mobil */
+    padding: 1.5rem; /* Mindre padding for mere plads */
+  }
+}

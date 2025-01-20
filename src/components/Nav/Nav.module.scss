@@ -1,0 +1,214 @@
+/* === Navigation Styles === */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #ffffff;
+
+  /* === Logo Container === */
+  .logoContainer {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 87px;
+      margin-right: 1rem;
+    }
+
+    .date {
+      font-family: 'Brush Script MT', cursive;
+      color: #333333;
+      font-size: 1.2rem;
+    }
+  }
+
+  /* === Navigation Links === */
+  .navLinks {
+    display: flex;
+    list-style: none;
+
+    li {
+      margin: 0 1rem;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        font-family: 'Playfair Display', serif;
+        color: #333333;
+        font-size: 1rem;
+        font-weight: normal;
+        transition: color 0.3s;
+
+        &:hover,
+        &.active {
+          color: #e63946;
+        }
+      }
+
+      /* Dropdown Menu */
+      &.dropdown {
+        span {
+          font-family: 'Playfair Display', serif;
+          color: #333333;
+          font-size: 1rem;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #e63946;
+          }
+        }
+
+        .dropdownMenu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #ffffff;
+          border: 1px solid #ddd;
+          list-style: none;
+          padding: 0;
+          z-index: 1000;
+          width: 150px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+          li {
+            margin: 0;
+            border-bottom: 1px solid #ddd;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            a {
+              display: block;
+              padding: 0.5rem 1rem;
+              font-family: 'Playfair Display', serif;
+              font-size: 0.9rem;
+              text-transform: uppercase;
+              text-decoration: none;
+              transition: color 0.3s, background-color 0.3s;
+
+              &:hover {
+                color: #e63946;
+                background-color: #f9f9f9;
+              }
+            }
+          }
+        }
+
+        &:hover .dropdownMenu {
+          display: block;
+        }
+      }
+    }
+  }
+
+  /* === Search Icon === */
+  .searchIcon {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #333333;
+    cursor: pointer;
+
+    &:hover {
+      color: #666666;
+    }
+
+    .searchInput {
+      margin-left: 0.5rem;
+      padding: 0.3rem 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+  }
+}
+
+/* === Media Queries === */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+
+    .logoContainer .logo {
+      height: 60px;
+    }
+
+    .navLinks {
+      flex-direction: column;
+      align-items: center; /* Centrer links i mobilvisning */
+      justify-content: center;
+      width: 100%;
+      padding: 0;
+
+      li {
+        margin: 0.5rem 0;
+
+        a {
+          font-size: 1rem; /* Juster tekststørrelse for mobil */
+        }
+      }
+    }
+
+    .searchIcon {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+
+      .searchInput {
+        width: 100%;
+        margin-left: 0;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    align-items: center; /* Centrer hele navigationen */
+  }
+
+  .navLinks {
+    display: none; /* Skjul links for burger-menu */
+  }
+
+  .burgerMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .line {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+
+    li {
+      margin: 0.5rem 0;
+
+      a {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
+  }
+}

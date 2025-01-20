@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'Trebuchet MS';
+  src: url('../fonts/TrebuchetMS.ttf') format('truetype');
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  justify-content: center;
+  margin: 60px auto;
+  max-width: 1900px;
+  padding: 0 90px;
+}
+
+.leftColumn {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  height: auto; /* Adjust for content height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Trebuchet MS', sans-serif;
+
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2rem;
+  }
+
+  .mapImage {
+    width: 100%;
+    height: auto; /* Adjust height for mobile */
+    object-fit: cover;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+}
+
+.rightColumn {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  height: auto; /* Adjust for content height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'Trebuchet MS', sans-serif;
+
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2rem;
+  }
+
+  p {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .mapEmbed {
+    margin-top: 20px;
+    flex-grow: 1;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 4px;
+    }
+  }
+}
+
+.nyhedsContainer {
+  width: 100%; /* Full-width container */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single-column layout for mobile */
+    gap: 20px;
+    padding: 0 20px; /* Reduce padding for smaller screens */
+  }
+
+  .leftColumn,
+  .rightColumn {
+    padding: 20px;
+    height: auto; /* Let height adjust based on content */
+  }
+
+  h2 {
+    font-size: 1.8rem; /* Adjust heading size for mobile */
+  }
+
+  p {
+    font-size: 1rem; /* Smaller paragraph font for mobile */
+  }
+
+  .mapImage {
+    height: auto; /* Allow natural height */
+    margin-top: 10px;
+  }
+
+  .mapEmbed iframe {
+    height: 250px; /* Restrict height for embedded map */
+  }
+}
+
