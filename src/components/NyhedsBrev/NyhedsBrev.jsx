@@ -1,77 +1,83 @@
-import { useEffect, useState } from 'react';
-import { FaEnvelope } from 'react-icons/fa'; 
+import { useEffect, useState } from 'react'; 
+import { FaEnvelope } from 'react-icons/fa';
 import styles from './NyhedsBrev.module.scss';
 
 export function NyhedsBrev() {
-  const [backgroundImage, setBackgroundImage] = useState('');
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  // Состояния компонента
+  const [backgroundImage, setBackgroundImage] = useState(''); // Состояние для фонового изображения
+  const [email, setEmail] = useState(''); // Состояние для ввода email
+  const [isSubmitted, setIsSubmitted] = useState(false); // Состояние для отображения успеха отправки
+  const [error, setError] = useState(''); // Состояние для отображения ошибок
 
+  // Загружаем фоновое изображение при монтировании компонента
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await fetch('https://api.mediehuset.net/mediesuset/images');
-        const data = await response.json();
-        setBackgroundImage(data.items[4]?.image || '');
+        const response = await fetch('https://api.mediehuset.net/mediesuset/images'); // Запрос к API
+        const data = await response.json(); // Преобразование ответа в JSON
+        setBackgroundImage(data.items[4]?.image || ''); // Устанавливаем 4-е изображение как фон
       } catch (error) {
-        console.error('Error fetching background image:', error);
+        console.error('Error fetching background image:', error); // Логируем ошибку
       }
     };
 
-    fetchImage();
-  }, []);
+    fetchImage(); // Вызываем функцию загрузки изображения
+  }, []); // Пустой массив зависимостей: выполняется только при монтировании
 
+  // Валидация email-адреса с использованием регулярного выражения
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-    return emailRegex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Регулярное выражение для проверки email
+    return emailRegex.test(email); // Возвращает true, если email корректный
   };
 
+  // Обработка отправки формы
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Предотвращаем перезагрузку страницы
     if (!validateEmail(email)) {
-      setError('Indtast en gyldig emailadresse.');
-      setIsSubmitted(false);
+      setError('Indtast en gyldig emailadresse.'); // Устанавливаем сообщение об ошибке
+      setIsSubmitted(false); // Сбрасываем состояние успешной отправки
       return;
     }
 
-    // Simuler en API-kald for tilmelding
-    setIsSubmitted(true);
-    setError('');
+    // Симулируем API-запрос
+    setIsSubmitted(true); // Устанавливаем состояние успешной отправки
+    setError(''); // Сбрасываем сообщение об ошибке
 
-    // Automatisk nulstilling efter 3 sekunder
+    // Автоматический сброс формы через 3 секунды
     setTimeout(() => {
-      setEmail('');
-      setIsSubmitted(false);
-    }, 3000); // 3 sekunder
+      setEmail(''); // Сбрасываем поле ввода email
+      setIsSubmitted(false); // Сбрасываем состояние отправки
+    }, 3000); // 3 секунды
   };
 
   return (
     <div
-      className={styles.newsletter}
+      className={styles.newsletter} // Применяем стили контейнера
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${backgroundImage})`, // Устанавливаем фоновое изображение
       }}
     >
-      <h2>TILMELD NYHEDSBREV</h2>
-      <p>Få de seneste nyheder sendt til din indbakke</p>
-      {!isSubmitted ? (
+      <h2>TILMELD NYHEDSBREV</h2> {/* Заголовок компонента */}
+      <p>Få de seneste nyheder sendt til din indbakke</p> {/* Подзаголовок */}
+      {!isSubmitted ? ( // Если форма еще не отправлена
         <form className={styles.form} onSubmit={handleSubmit}>
+          {/* Поле ввода email */}
           <div className={styles['input-wrapper']}>
-            <FaEnvelope className={styles.icon} />
+            <FaEnvelope className={styles.icon} /> {/* Иконка конверта */}
             <input
-              type="email"
-              placeholder="Indtast emailadresse"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              type="email" // Поле для ввода email
+              placeholder="Indtast emailadresse" // Подсказка
+              value={email} // Привязка состояния email
+              onChange={(e) => setEmail(e.target.value)} // Обновление состояния email
+              required // Поле обязательно для заполнения
             />
           </div>
-          <button type="submit">TILMELD</button>
-          {error && <p className={styles.error}>{error}</p>}
+          <button type="submit">TILMELD</button> {/* Кнопка отправки */}
+          {error && <p className={styles.error}>{error}</p>} {/* Сообщение об ошибке */}
         </form>
       ) : (
         <div className={styles.success}>
+          {/* Сообщение об успешной отправке */}
           <p>Tak for din tilmelding!</p>
           <p>Du bliver omdirigeret tilbage...</p>
         </div>
